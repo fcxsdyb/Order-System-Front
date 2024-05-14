@@ -67,7 +67,7 @@ const StoreContextProvider = (props) => {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        tableId: 2,
+                        tableId: 1,
                         customerId: customer.id,
                         price: orderTotal,
                         details: orderDetails

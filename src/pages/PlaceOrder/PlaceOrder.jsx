@@ -11,12 +11,7 @@ const PlaceOrder = () => {
         email: ""
     })
 
-    const [data, setData] = useState({
-        name: "",
-        email: ""
-    })
-
-    const { cartItems, food_list, getTotalCartAmount, placeOrder } = useContext(StoreContext);
+    const { getTotalCartAmount, placeOrder } = useContext(StoreContext);
 
     const navigate = useNavigate();
 
@@ -64,7 +59,7 @@ const PlaceOrder = () => {
                         <img src={assets.selector_icon} alt="" />
                         <p>COD ( Cash On Delivery )</p>
                     </div>
-                    <button onClick={() => placeOrder(user, data)}>PLACE ORDER</button>
+                    <button onClick={() => placeOrder(user)}>PLACE ORDER</button>
                 </div>
 
             </div>

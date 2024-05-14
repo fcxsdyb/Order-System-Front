@@ -1,14 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import './Navbar.css';
 import { assets } from '../../assets/assets';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { StoreContext } from '../../Context/StoreContext';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 
 const Navbar = () => {
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext); // Ensure token and setToken are provided from context
-  const navigate = useNavigate();
+  const { getTotalCartAmount, setToken } = useContext(StoreContext); // Ensure token and setToken are provided from context
 
   // Load token from local storage and update context
   useEffect(() => {
@@ -26,15 +25,6 @@ const Navbar = () => {
     localStorage.setItem('name', decoded.name);
     localStorage.setItem('email', decoded.email);
     setToken(credentialResponse);
-  };
-
-  // Logout handler
-  const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('name');
-    localStorage.removeItem('email');
-    setToken("");
-    navigate('/');
   };
 
   return (

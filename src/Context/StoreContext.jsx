@@ -31,7 +31,7 @@ const StoreContextProvider = (props) => {
 
     const addCustomer = async (customerData) => {
         try {
-            const response = await fetch('https://first-order-system-5bb7f8de9b20.herokuapp.com/customer', {
+            const response = await fetch('http://3.26.157.129:8080/customer', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -55,13 +55,12 @@ const StoreContextProvider = (props) => {
                 const orderTotal = getTotalCartAmount() * 1.018;
                 const orderDetails = Object.entries(cartItems).map(([id, quantity]) => ({
                     dishId: id,
-                    quantity: quantity,
-                    amount: food_list.find(item => item.food_id === parseInt(id)).food_price * quantity,
+                    amount: quantity,
                     desc: food_list.find(item => item.food_id === parseInt(id)).name
                 }));
 
                 // Sending order to backend
-                const response = await fetch('https://first-order-system-5bb7f8de9b20.herokuapp.com/order', {
+                const response = await fetch('http://3.26.157.129:8080/order', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
